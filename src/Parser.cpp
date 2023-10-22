@@ -16,9 +16,18 @@ std::vector<Node>	Parser::parse(void)
 			Token text = consume();
 			nodes.push_back({ .value = NodeTitle { .title = title, .text = text } });
 		}
-		else
+		else if (peek().value().type == TokenType::text)
+		{
+			Token text = consume();
+			nodes.push_back({ .value = NodeText { .text = text } });
+		}
+		else if (peek().value().type == TokenType::nl)
 		{
 			consume();
+		}
+		else
+		{
+			assert(false && "Not implemented.");
 		}
 	}
 	m_index = 0;

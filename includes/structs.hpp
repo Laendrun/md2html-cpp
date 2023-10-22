@@ -30,9 +30,14 @@ struct NodeTitle
 	Token	text;
 };
 
+struct NodeText
+{
+	Token	text;
+};
+
 struct Node
 {
-	std::variant<NodeTitle>	value;
+	std::variant<NodeTitle, NodeText>	value;
 };
 
 

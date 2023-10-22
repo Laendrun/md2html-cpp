@@ -20,6 +20,7 @@ class Generator
 
 		void	gen_node(Node node);
 		void	gen_title(NodeTitle node);
+		void	gen_text(NodeText node);
 };
 
 #endif

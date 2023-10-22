@@ -23,6 +23,10 @@ void	Generator::gen_node(Node node)
 		{
 			gen.gen_title(node);
 		}
+		void operator()(const NodeText& node) const 
+		{
+			gen.gen_text(node);
+		}
 	};
 
 	NodeVisitor visitor { .gen = *this };
@@ -33,4 +37,9 @@ void	Generator::gen_title(NodeTitle node)
 {
 	const int level = node.title.value.value().length();
 	m_output << "<h" << level << ">" << node.text.value.value() << "</h" << level << ">\n";
+}
+
+void	Generator::gen_text(NodeText node)
+{
+	m_output << "<p>" << node.text.value.value() << "</p>\n";
 }

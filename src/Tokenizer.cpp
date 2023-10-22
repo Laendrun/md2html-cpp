@@ -47,9 +47,15 @@ std::vector<Token>	Tokenizer::tokenize(void)
 			tokens.push_back({ .type = TokenType::text, .value = trim(buf) });
 			buf.clear();
 		}
+		else if (peek().value() == '\n')
+		{
+			// TokenType::newline
+			consume();
+			tokens.push_back({ .type = TokenType::nl, .value = "" });
+		}
 		else
 		{
-			consume();
+			assert(false && "Not implemented.");
 		}
 	}
 	m_index = 0;
